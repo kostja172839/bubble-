@@ -1,0 +1,47 @@
+
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+using namespace std;
+void bubble(unsigned int* a, int n)
+{
+	for (int i = n - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			if (a[j] > a[j + 1])
+			{
+				int tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
+			}
+		}
+	}
+}
+int main(int argc, char* argv[])
+{
+	srand(time(NULL));
+	setlocale(LC_ALL, "rus");
+	cout << "Введите размер массива: ";
+	unsigned int size_array;
+	cin >> size_array;
+
+	unsigned int *sorted_array = new unsigned int[size_array];
+	for (unsigned int counter = 0; counter < size_array; counter++)
+	{
+		sorted_array[counter] = rand() % 255; 
+		cout << setw(2) << sorted_array[counter] << "  "; 
+	}
+	cout << "\n\n";
+
+	bubble(sorted_array, size_array); 
+
+	for (unsigned int counter = 0; counter < size_array; counter++)
+	{
+		cout << setw(2) << sorted_array[counter] << "  ";
+	}
+	cout << "\n";
+
+	system("pause");
+	return 0;
+}
